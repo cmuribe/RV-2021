@@ -5,10 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Environment+3D model</title>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
 </head>
 <body>
-    
+    <a-scene>
+        <!--Creamos nuestra biblioteca de assets-->
+        <a-assets>
+            <!--Creamos un asset-item que traera nuestro objeto en 3D y su respectivo material para ser renderizado en la escena-->
+            <a-asset-item id="casa" src="assets/models/casa/old-house.obj"></a-asset-item>
+            <a-asset-item id="mtlCasa" src="assets/models/casa/old-house.mtl"></a-asset-item>
+
+            <!--Dragon-->
+            <a-asset-item id="dragon" src="assets/models/dragon/alduin-dragon.obj"></a-asset-item>
+            <a-asset-item id="mtlDragon" src="assets/models/dragon/alduin-dragon.mtl"></a-asset-item>
+        </a-assets>
+        <a-entity environment="preset: egypt; fog:0.8; seed: 150; ground: hills; groundYScale: 100; playArea: 2"></a-entity>
+
+        <!--Importamos a la escena el modelo 3D-->
+        <a-entity obj-model="obj: #casa; mtl: #mtlCasa" position= "0 0 0"></a-entity>
+        <a-entity obj-model="obj: #dragon; mtl: #mtlDragon" position= "0 2.5 -5" rotate="0 -90 0" scale="0.01 0.01 0.01"></a-entity>
+    </a-scene>
 </body>
 </html>
